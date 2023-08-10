@@ -1,0 +1,28 @@
+
+# dataframe: ESOL # BBBP, Tox21, SIDER, ClinTox, BACE, HIV, MUV, ESOL, FreeSolv, Lipophilicity, QM7, QM8, QM9
+
+model: roberta # bert, roberta
+
+train_batch_size: 10
+valid_batch_size: 6
+
+model_bert:
+  vocab_size: 50000
+  hidden_size: 768
+  num_hidden_layers: 6
+  num_attention_heads: 12
+  max_position_embeddings: 512
+
+model_roberta:
+  vocab_size: 50000
+  hidden_size: 768
+  num_hidden_layers: 6
+  num_attention_heads: 12
+  max_position_embeddings: 514
+
+device: cuda:0 # cuda:0, cpu
+
+max_length: 512
+
+learning_rate: 5e-5
+pretrain_epochs: 7
