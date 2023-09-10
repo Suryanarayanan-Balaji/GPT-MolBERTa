@@ -5,9 +5,14 @@ import backoff
 import os
 import glob2
 import numpy as np
+import yaml
 
 path = os.getcwd() #/home/suryabalaji/GPT_MolBERTa
-filename = os.path.join(path, 'text_files_' + 'var')
+
+with open(os.path.join(location, 'config_finetune.yaml'), 'r') as config_file:
+    config = yaml.safe_load(config_file)
+
+filename = os.path.join(path, 'text_files_' + config['dataframe'])
 api_key_path = path + '/' + 'GPT_API_Key.txt'
 # "/home/suryabalaji/data_gen/text_files_QM9_2/**.txt"
 p = filename + '/' + '**.txt'
