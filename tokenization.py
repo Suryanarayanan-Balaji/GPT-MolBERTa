@@ -55,9 +55,9 @@ elif config['model'] == 'roberta':
     tokenizer.train(
         files = [filepath],
         vocab_size = 50000,
-        min_frequency = 2, ## Figure this out
+        min_frequency = 2,
         show_progress = True,
-        special_tokens = ["<s>", "<pad>", "</s>", "<unk>", "<mask>"] # mask index = 4
+        special_tokens = ["<s>", "<pad>", "</s>", "<unk>", "<mask>"] 
     )
 
     tokenizer.post_processor = RobertaProcessing(
