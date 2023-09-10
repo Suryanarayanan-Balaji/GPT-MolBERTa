@@ -1,0 +1,7 @@
+{
+    "model_type": "roberta",
+    "tokenizer_type": "RobertaTokenizer",
+    "tokenizer_name": "my_custom_roberta",
+    "merges_file": "/home/suryabalaji/GPT_MolBERTa/roberta/tokenizer_folder/merges.txt",
+    "vocab_file": "/home/suryabalaji/GPT_MolBERTa/roberta/tokenizer_folder/vocab.json"
+}
