@@ -30,4 +30,4 @@ for i in number:
 df.loc[:, 'Descriptions'] = descriptions
 df.loc[:, 'count'] = num_tokens
 df = df[df['count'] >= 100].reset_index(drop = True)
-df.to_csv(location + '/data/datasets/' + str(config['dataframe']) + ' dataset.csv', sep = ',', encoding = 'utf-8')
+df.to_csv(location + '/data/' + str(config['dataframe']) + ' dataset.csv', sep = ',', encoding = 'utf-8')
