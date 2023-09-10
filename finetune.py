@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import torch
-# from torch.utils.tensorboard import SummaryWriter
 
 from tqdm import tqdm
 from transformers import BertTokenizer, BertConfig, RobertaTokenizer, RobertaConfig
@@ -19,7 +18,7 @@ import yaml
 from datetime import datetime
 import os
 
-from dataset.data_processing import Data_Split, Data_Processor # Change MyDataLoader to Data_Split
+from data_process.data_processing import Data_Split, Data_Processor 
 from model.model import BertClass, RobertaClass
 
 class Normalizer(object):
@@ -47,7 +46,6 @@ class FineTune(object):
 
         if self.config['model'] == 'bert':
             self.tokenizer = BertTokenizer(tokenizer_path)
-            # BertTokenizer.from_pretrained(tokenizer_path)
 
         elif self.config['model'] == 'roberta':
             self.tokenizer = RobertaTokenizer(
@@ -61,8 +59,6 @@ class FineTune(object):
         
         if not os.path.exists(self.log_dir):
             os.makedirs(self.log_dir)
-
-        # self.writer = SummaryWriter()
 
     def gpu_device (self):
         if torch.cuda.is_available and self.config['device'] != 'cpu':
@@ -132,8 +128,6 @@ class FineTune(object):
                 loss_step = (train_loss/num_train_steps)
                 print(f'Train Loss per 500 steps: {loss_step}')
 
-            # self.writer.add_scalar('Train Loss Step', loss_step, num_train_steps)
-
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -142,28 +136,24 @@ class FineTune(object):
         prob_array_new = np.concatenate(prob_array_batch, axis = 0)
 
         epoch_loss = train_loss/num_train_steps
-        # self.writer.add_scalar('Train Loss Epoch', epoch_loss, num_train_steps)
         print(f"Training Loss Epoch = {epoch_loss}")
 
         if self.config['dataset']['task'] == 'classification':
 
             epoch_auc = roc_auc_score(label_array_new, prob_array_new)
-            # self.writer.add_scalar('Train AUC Epoch', epoch_auc, num_train_steps)
             print(f"Training AUC Epoch = {epoch_auc}")
 
             return epoch_loss, epoch_auc
 
-        elif self.config['dataset']['task'] == 'regression': # combine MAE and RMSE for all regression
+        elif self.config['dataset']['task'] == 'regression': 
             if self.config['dataframe'] in ['QM7', 'QM8', 'QM9']:
                 epoch_MAE = mean_absolute_error(label_array_new, prob_array_new)
-                # self.writer.add_scalar('Train MAE Epoch', epoch_MAE, num_train_steps)
                 print(f"Training MAE Epoch = {epoch_MAE}")
 
                 return epoch_loss, epoch_MAE
 
             else:
                 epoch_RMSE = mean_squared_error(label_array_new, prob_array_new, squared = False)
-                # self.writer.add_scalar('Train RMSE Epoch', epoch_RMSE, num_train_steps)
                 print(f"Training RMSE Epoch = {epoch_RMSE}")
 
                 return epoch_loss, epoch_RMSE
@@ -212,27 +202,23 @@ class FineTune(object):
             prob_array_new = np.concatenate(prob_array_batch, axis = 0)
 
             validation_loss = valid_loss/num_valid_steps
-            # self.writer.add_scalar('Validation Loss', validation_loss, num_valid_steps)
             print(f"Validation Loss: {validation_loss}")
 
-            if self.config['dataset']['task'] == 'classification': # get R^2
+            if self.config['dataset']['task'] == 'classification': 
                 auc_score = roc_auc_score(label_array_new, prob_array_new)
-                # self.writer.add_scalar('Validation AUC', auc_score, num_valid_steps)
                 print(f"Validation AUC = {auc_score}")
 
                 return validation_loss, auc_score
 
-            elif self.config['dataset']['task'] == 'regression': # combine MAE and RMSE for all regression
+            elif self.config['dataset']['task'] == 'regression':
                 if self.config['dataframe'] in ['QM7', 'QM8', 'QM9']:
                     MAE_val = mean_absolute_error(label_array_new, prob_array_new)
-                    # self.writer.add_scalar('Validation MAE', MAE_val, num_valid_steps)
                     print(f"Validation MAE = {MAE_val}")
 
                     return validation_loss, MAE_val
 
                 else:
                     RMSE_val = mean_squared_error(label_array_new, prob_array_new, squared = False)
-                    # self.writer.add_scalar('Validation RMSE', RMSE_val, num_valid_steps)
                     print(f"Validation RMSE = {RMSE_val}")
 
                     return validation_loss, RMSE_val
@@ -287,22 +273,21 @@ class FineTune(object):
             prob_array_new = np.concatenate(prob_array_batch, axis = 0)
 
             test_loss = test_loss/num_test_steps
-            # self.writer.add_scalar('Test Loss', test_loss, num_test_steps)
             print(f"Test Loss: {test_loss}")
 
             if self.config['dataset']['task'] == 'classification':
-                auc_score = roc_auc_score(label_array_new, prob_array_new) # print length of train, valid, test 
+                auc_score = roc_auc_score(label_array_new, prob_array_new) 
 
                 return test_loss, auc_score
 
-            elif self.config['dataset']['task'] == 'regression': # combine MAE and RMSE for all regression
+            elif self.config['dataset']['task'] == 'regression': 
                 if self.config['dataframe'] in ['QM7', 'QM8', 'QM9']:
                     MAE_test = mean_absolute_error(label_array_new, prob_array_new)
 
                     return test_loss, MAE_test
 
                 else:
-                    RMSE_test = mean_squared_error(label_array_new, prob_array_new, squared = False) # root mean squared error
+                    RMSE_test = mean_squared_error(label_array_new, prob_array_new, squared = False)
 
                     return test_loss, RMSE_test
     
@@ -315,12 +300,9 @@ class FineTune(object):
         elif self.config['model'] == 'roberta':
             configuration = RobertaConfig(**self.config['model_roberta'])
             model = RobertaClass(configuration).to(self.device)
-            # model = RobertaModel()
         print(model)
 
         optimizer = torch.optim.Adam(model.parameters(), lr = float(self.config['learning_rate']))
-        # scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode = 'min', patience = 2, verbose = True)
-        #add xavier initialization to model parameters
 
         best_validate_auc = 0.0
         best_validate_regression = np.inf
@@ -355,8 +337,6 @@ class FineTune(object):
                     valid_loss, valid_regression = self.validate(model, validate_loader)
                     regression_vals.append(valid_regression)
                     validation_loss.append(valid_loss)
-            
-            # scheduler.step(validation_loss)
             
             mean_auc = np.mean(auc_vals)
             mean_regression = np.mean(regression_vals)
@@ -410,9 +390,6 @@ class FineTune(object):
 
         mean_auc_test = np.mean(auc_test)
         mean_regression_test = np.mean(regression_test)
-        # self.attention_matrix = attention
-        # print(f'attention shape = {self.attention_matrix.shape}')
-        # print(f'attention matrix = {self.attention_matrix.detach().cpu().numpy()}')
 
         if self.config['dataset']['task'] == 'classification':
             self.roc_auc = mean_auc_test
@@ -439,12 +416,6 @@ def main(config):
             return finetune.mae
         else:
             return finetune.rmse
-    
-    # if self.config['visualize'] == 'attention':
-    #     df = pd.DataFrame(finetune.attention_matrix.detach().numpy())
-    #     cwd = os.getcwd()
-    #     paths = os.path.join(cwd, 'finetune')
-    #     return df.to_csv(paths + '/' + 'attention_matrix.csv', index = False)
 
 if __name__ == '__main__':
     location = os.getcwd()
@@ -509,7 +480,6 @@ if __name__ == '__main__':
             'MUV-712', 'MUV-737', 'MUV-858', 'MUV-713', 
             'MUV-733', 'MUV-652', 'MUV-466', 'MUV-832'
         ]
-# , 'MUV-689'
     elif config['dataframe'] == 'ESOL':
         config['dataset']['task'] == 'regression'
         target_list = ["measured log solubility in mols per litre"]
