@@ -12,7 +12,6 @@ dataset:
 model: roberta # bert, roberta
 pretrain: pretraining # pretraining, scratch
 early_stopping: 8 # Stop training if there is no improvement in model performance after these number of epochs
-# visualize: attention
 
 model_bert:
   vocab_size: 50000
@@ -33,4 +32,4 @@ device: cuda:0 # cuda:0, cpu
 max_length: 512
 
 learning_rate: 1e-5
-epochs: 1
+epochs: 30
