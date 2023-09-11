@@ -17,6 +17,18 @@ The datasets are in this link: https://drive.google.com/file/d/1ECiSlUT8yvJBSErj
 ## Getting Started
 
 ### Software Required
-python 3.9.1
-transformers
+python 3.10.1 \\
+tokenizers 0.11.4 \\
+transformers 4.28.0 \\
+rdkit 2023.3.2 \\
+
+### Installation of Repository
+
+1. Clone the repository using the following command
+```python
+# Clone the repository of GPT-MolBERTa
+git clone https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa.git
+cd GPT-MolBERTa
+```
+2. 
 
