@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level = logging.ERROR)
 import os
 import yaml
-from dataset.data_processing import Data_Processor
+from data_process.data_processing import Data_Processor
 import random 
 
 location = os.getcwd() # /home/suryabalaji/GPT_MolBERTa
