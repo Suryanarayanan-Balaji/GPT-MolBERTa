@@ -12,8 +12,6 @@ GPT-MolBERTa is a text based molecular property prediction model. Instead of usi
 
 * Achieves strong performance in the regression tasks of MoleculeNet
 
-The datasets are in this link: https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link
-
 ## Getting Started
 
 ### Software Required
@@ -30,5 +28,7 @@ rdkit 2023.3.2 \\
 git clone https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa.git
 cd GPT-MolBERTa
 ```
-2. 
+### Dataset
+1. Processed Textual Dataset
+The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link. The zip file should be unzipped and placed in GPT-MolBERTa folder.
 
