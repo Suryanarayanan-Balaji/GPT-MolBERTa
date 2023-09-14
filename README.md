@@ -53,6 +53,7 @@ Text descriptions can be generated and added to any dataset as required. The dat
    python ./data_collection/data_generation_for_missing.py
    ```
   1.3 Transfer all the descriptions from the folder generated in 1.2 to that generated in 1.1.
+  
   1.4 Run dataset_prep.py to compile the dataset together.
    ```python
    python ./data_collection/dataset_prep.py
