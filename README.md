@@ -16,8 +16,9 @@ GPT-MolBERTa is a text based molecular property prediction model. Instead of usi
 [GPTMolBerta.pdf](https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/files/12598549/GPTMolBerta.pdf)
 
 ## Getting Started
+Here are the required prerequisites which are required to be installed:
 
-### Software Required (Add some more)
+### Software Required 
 openai 0.27.6 \\
 backoff 2.2.1 \\
 python 3.10.1 \\
@@ -25,7 +26,8 @@ tokenizers 0.11.4 \\
 transformers 4.28.0 \\
 rdkit 2023.3.2 \\
 
-### Installation of Repository
+In addition to this, an OpenAI account along with a GPT API Key should also be created. The GPT API Key should be a text file in the GPT-MolBERTa folder.
+## Installation of Repository
 
 1. Clone the repository using the following command
 ```python
@@ -54,5 +56,15 @@ Text descriptions can be generated and added to any dataset as required. The dat
 The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link. The zip file should be unzipped and placed in GPT-MolBERTa folder.
 
 ### Finetuning
-1. 
+The training configurations for GPT-MolBERTa can be found in the config_finetune.yaml file.
 
+During the finetuning process, GPT-MolBERTa creates and stores the model in the finetune folder. This folder is created automatically if it doesn't exist and serves as the storage location for the finetuned models. The command for finetuning is as follows.
+
+ ```python
+ python finetune.py
+ ```
+### Attention Score Analysis
+The AttentionVisualizer repository offers a comprehensive toolkit for visualizing and analyzing attention scores. To effectively utilize this tool in conjunction with GPT-MolBERTa, you can integrate the finetuned Roberta encoder into the AttentionVisualizer package.
+
+## Contact
+For more information about the model checkpoints and datasets, please contact suryanab@andrew.cmu.edu
