@@ -19,17 +19,17 @@ GPT-MolBERTa is a text based molecular property prediction model. Instead of usi
 Here are the required prerequisites which are required to be installed:
 
 ### Software Required 
-openai 0.27.6 \
+openai 0.27.6 
 
-backoff 2.2.1 \
+backoff 2.2.1 
 
-python 3.10.1 \
+python 3.10.1 
 
-tokenizers 0.11.4 \
+tokenizers 0.11.4 
 
-transformers 4.28.0 \
+transformers 4.28.0 
 
-rdkit 2023.3.2 \
+rdkit 2023.3.2 
 
 In addition to this, an OpenAI account along with a GPT API Key should also be created. The GPT API Key should be a text file in the GPT-MolBERTa folder.
 ## Installation of Repository
