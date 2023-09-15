@@ -17,7 +17,7 @@ class Data_Processor:
     
     def data_reader (self):
         location = os.getcwd() # /home/suryabalaji/GPT_MolBERTa
-        path = os.path.join(location, 'data', 'datasets')
+        path = os.path.join(location, 'data')
         fil = path + '/' + str(self.dataset) + '_dataset' + '.csv'
         data = pd.read_csv(fil, sep = ',', encoding = 'utf-8')
         data = data.drop('Unnamed: 0', axis = 1) 
