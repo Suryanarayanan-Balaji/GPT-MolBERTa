@@ -14,7 +14,7 @@ GPT-MolBERTa is a text based molecular property prediction model. Instead of usi
 
 * Achieves strong performance in the regression tasks of MoleculeNet
 
-![GPTMolBerta](https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/b054f041-4c90-49e6-a204-3f9970025b1a, width = 100)
+![GPTMolBerta](https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/b054f041-4c90-49e6-a204-3f9970025b1a)
 
 ## Getting Started
 Here are the required prerequisites which are required to be installed:
