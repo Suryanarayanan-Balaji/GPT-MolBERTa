@@ -1,1 +1,6 @@
-
+,num,name,p_np,smiles
+0,1,Propanolol,1,[Cl].CC(C)NCC(O)COc1cccc2ccccc12
+1,2,Terbutylchlorambucil,1,C(=O)(OC(C)(C)C)CCCc1ccc(cc1)N(CCCl)CCCl
+2,3,40730,1,c12c3c(N4CCN(C)CC4)c(F)cc1c(c(C(O)=O)cn2C(C)CO3)=O
+3,4,24,1,C1CCN(CC1)Cc1cccc(c1)OCCCNC(=O)C
+4,5,cloxacillin,1,Cc1onc(c2ccccc2Cl)c1C(=O)N[C@H]3[C@H]4SC(C)(C)[C@@H](N4C3=O)C(O)=O
