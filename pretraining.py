@@ -12,7 +12,7 @@ import numpy as np
 
 location = os.getcwd() # /home/suryabalaji/GPT_MolBERTa
 
-with open(os.path.join(location, 'config_finetune.yaml'), 'r') as config_file:
+with open(os.path.join(location, 'config_pretrain.yaml'), 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 if config['model'] == 'bert':
@@ -31,8 +31,7 @@ if config['model'] == 'bert':
 
 elif config['model'] == 'roberta':
     path = os.path.join(location, 'roberta')
-    train_file = os.path.join(path, 'pretrain_data_roberta_train.txt')
-    eval_file = os.path.join(path, 'pretrain_data_roberta_eval.txt')
+    train_file = os.path.join(path, 'pretrain_data_roberta.txt')
 
     vocab_file_directory = os.path.join(path, 'tokenizer_folder')
 
@@ -53,13 +52,7 @@ train_dataset = LineByLineTextDataset(
     block_size = 128
 )
 
-eval_dataset = LineByLineTextDataset( 
-    tokenizer = tokenizer,
-    file_path = eval_file,
-    block_size = 128
-)
-
-print(f'No. of lines: {len(train_dataset) + len(eval_dataset)}')
+print(f'No. of lines: {len(train_dataset)}')
 
 data_collator = DataCollatorForLanguageModeling(
     tokenizer = tokenizer, mlm = True, mlm_probability = 0.15
@@ -68,8 +61,8 @@ data_collator = DataCollatorForLanguageModeling(
 training_args = TrainingArguments(
     output_dir = path,
     overwrite_output_dir = True,
-    num_train_epochs = 7,
-    per_device_train_batch_size = 30,
+    num_train_epochs = config['epoch'], # 7
+    per_device_train_batch_size = config['batch_size'], # 30
     save_steps = 1000,
     save_total_limit = 5
 )
