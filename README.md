@@ -59,7 +59,7 @@ Text descriptions can be generated and added to any dataset as required. The dat
    python ./data_collection/dataset_prep.py
    ```
 2. Processed Textual Dataset
-The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link. The zip file should be unzipped and placed in GPT-MolBERTa folder.
+The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: [https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link](https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link). The zip file should be unzipped and placed in GPT-MolBERTa folder.
 
 ### Pretraining
 If pretraining the model with other datasets, the following steps must be followed.
