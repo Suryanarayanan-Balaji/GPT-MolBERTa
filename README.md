@@ -1,6 +1,6 @@
 # GPT-MolBERTa (Text-based molecular property prediction)
- <img src='https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/3c147ccf-bef4-4d81-9fc7-36d3eb31bf7f' width="250" align="right">
 ## Summary
+<img src='https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/3c147ccf-bef4-4d81-9fc7-36d3eb31bf7f' width="250" align="right">
 GPT-MolBERTa is a text based molecular property prediction model. Instead of using SMILES, it utilizes a text-based representation of the SMILES molecules containing information such as atom types, elemental properties, geometry and some other relevant information. GPT-MolBERTa was pretrained with these descriptions and finetuned on selected datasets from the MoleculeNet benchmark.
 
 ## Details
