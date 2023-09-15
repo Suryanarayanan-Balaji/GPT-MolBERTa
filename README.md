@@ -1,9 +1,7 @@
 # GPT-MolBERTa (Text-based molecular property prediction)
 
 ## Summary
-GPT-MolBERTa is a text based molecular property prediction model. Instead of using SMILES, it utilizes a text-based representation of the SMILES molecules containing information such as atom types, elemental properties, geometry and some other relevant information. GPT-MolBERTa was pretrained with these descriptions and finetuned on selected datasets from the MoleculeNet benchmark. ![DreamShaper_v7_Molecules_description_generated_with_chatGPT_an_2](https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/3c147ccf-bef4-4d81-9fc7-36d3eb31bf7f)
-.
-
+GPT-MolBERTa is a text based molecular property prediction model. Instead of using SMILES, it utilizes a text-based representation of the SMILES molecules containing information such as atom types, elemental properties, geometry and some other relevant information. GPT-MolBERTa was pretrained with these descriptions and finetuned on selected datasets from the MoleculeNet benchmark. ![DreamShaper_v7_Molecules_description_generated_with_chatGPT_an_2](https://github.com/Suryanarayanan-Balaji/GPT-MolBERTa/assets/112913550/3c147ccf-bef4-4d81-9fc7-36d3eb31bf7f).
 
 ## Details
 * Provides text-based molecular datasets for MoleculeNet datasets
@@ -59,6 +57,8 @@ Text descriptions can be generated and added to any dataset as required. The dat
    ```python
    python ./data_collection/dataset_prep.py
    ```
+Any new dataset should be placed in the dataset folder, with the SMILES column named as 'smiles'. In the config_finetune.yaml file, the name of the dataset should be specified within the 'dataframe' argument. An example dataset is provided under the dataset folder.
+
 2. Processed Textual Dataset
 The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: [https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link](https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link). The zip file should be unzipped and placed in GPT-MolBERTa folder.
 
