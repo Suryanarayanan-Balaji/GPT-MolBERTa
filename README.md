@@ -63,7 +63,15 @@ The datasets used for this project are nine official datasets from MoleculeNet w
 
 ### Pretraining
 If pretraining the model with other datasets, the following steps must be followed.
-
+1. Tokenize the corpus by running tokenization.py using the following command.
+```python
+python tokenization.py
+```
+2. Pretrain the model using pretraining.py script with the following command.
+```python
+python pretraining.py
+```
+The hyperparameters for pretraining are found in the config_pretrain.yaml file.
 
 ### Finetuning
 The training configurations for GPT-MolBERTa can be found in the config_finetune.yaml file.
