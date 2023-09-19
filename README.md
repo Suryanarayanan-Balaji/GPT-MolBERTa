@@ -60,7 +60,7 @@ Text descriptions can be generated and added to any dataset as required. The dat
 Any new dataset should be placed in the dataset folder, with the SMILES column named as 'smiles'. In the config_finetune.yaml file, the name of the dataset should be specified within the 'dataframe' argument. An example dataset is provided under the dataset folder.
 
 2. Processed Textual Dataset
-The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: [https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link](https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link). The zip file should be unzipped and placed in GPT-MolBERTa folder.
+The datasets used for this project are nine official datasets from MoleculeNet with text descriptions added. The datasets are provided in this link: [Datasets](https://drive.google.com/file/d/1ECiSlUT8yvJBSErjR9f_dLV_2r6PxCQe/view?usp=drive_link). The zip file should be unzipped and placed in GPT-MolBERTa folder.
 
 ### Pretraining
 If pretraining the model with other datasets, the following steps must be followed.
@@ -73,6 +73,9 @@ python tokenization.py
 python pretraining.py
 ```
 The hyperparameters for pretraining are found in the config_pretrain.yaml file.
+
+The pretrained RoBERTa model is found in this link: [Pretrained RoBERTa](https://drive.google.com/file/d/1_vKE6Rb9A7PU0PVTu3u1XlaqoPXsp9sJ/view?usp=drive_link). Remember to place this model in the roberta folder.
+The pretrained BERT model is found in this link: [Pretrained BERT](https://drive.google.com/file/d/1b39vo6OZIa76VacZL50oT7mbO6Yue6l6/view?usp=drive_link). Remember to place this model in the bert folder.
 
 ### Finetuning
 The training configurations for GPT-MolBERTa can be found in the config_finetune.yaml file.
