@@ -182,7 +182,7 @@ class FineTune(object):
                 if self.config['dataset']['task'] == 'classification':
                     probs = torch.softmax(outputs, dim = 1)[:,1]
 
-                elif self.config['dataframe'] in ['FreeSolv', 'ESOL', 'Lipophilicity']: # Run more experiments
+                elif self.config['dataframe'] in ['FreeSolv', 'ESOL', 'Lipophilicity']: 
                     probs = self.normalizer.denorm(outputs)
                     labels = self.normalizer.denorm(labels)
             
@@ -287,7 +287,7 @@ class FineTune(object):
                     return test_loss, MAE_test
 
                 else:
-                    RMSE_test = mean_squared_error(label_array_new, prob_array_new, squared = False) # root mean squared error
+                    RMSE_test = mean_squared_error(label_array_new, prob_array_new, squared = False) 
 
                     return test_loss, RMSE_test
     
